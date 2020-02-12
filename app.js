@@ -5,27 +5,28 @@ for (var i=1;i<=day;i++){
     
 };
 
-console.log(arr)
+console.log(arr);
 
 
 function binarySearch(arr,number){
     let start=0;
     let end=arr.length-1;
-    let step=1
+    let step=0
     if(number<start||number>end){
         return false
     }
     while(start<=end){
-        mid=Math.ceil((start+end)/2);
-        if(arr[mid]>number){
-            end=arr[mid]
-        }else if(arr[mid]<number){
-            start=arr[mid]
-        }else if(arr[mid]===number){
-            console.log(true)
-            break;
-        }
+        mid=Math.floor((start+end)/2);
         step++;
+        if(arr[mid]==number){
+            return step;
+        }else if(arr[mid]<number){
+            start=mid+1
+        }else if(arr[mid]>number){
+            end=mid-1
+            
+        }
+        
     }
     return step
 }
